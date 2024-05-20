@@ -14,11 +14,22 @@ jest.mock("react-i18next", () => ({
       restart: "Restart",
       quit: "Quit",
       undo: "Undo",
+      player: "Player",
+      computer: "Computer",
+      wins: "Wins",
+      losses: "Losses",
+      draws: "Draws",
     };
 
     return {
-      t: () => {
-        return gamePage;
+      t: (str: string) => {
+        if (str === "gamePage.player") {
+          return gamePage.player;
+        } else if (str === "gamePage.computer") {
+          return gamePage.computer;
+        } else {
+          return gamePage;
+        }
       },
     };
   },
@@ -47,7 +58,6 @@ describe("GameContainer", () => {
           },
         },
       );
-
       const cell = screen.getByTestId("board-cell-0");
       fireEvent.click(cell);
 

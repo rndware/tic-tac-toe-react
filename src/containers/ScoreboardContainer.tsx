@@ -9,14 +9,16 @@ import {
 
 const ScoreboardContainer = () => {
   const playerScores = useAppSelector(getPlayerScores);
-  const playerWins = useAppSelector(getComputerScores);
+  const computerScores = useAppSelector(getComputerScores);
   const { t } = useTranslation();
 
   return (
     <Scoreboard
       copy={t("gamePage", { returnObjects: true })}
-      human={playerScores}
-      computer={playerWins}
+      playerDetails={[
+        { title: t("gamePage.player"), scores: playerScores },
+        { title: t("gamePage.computer"), scores: computerScores },
+      ]}
     />
   );
 };

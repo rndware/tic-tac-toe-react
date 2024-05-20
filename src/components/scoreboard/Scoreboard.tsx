@@ -3,15 +3,19 @@ import Typography from "@mui/material/Typography";
 import { I18nCopy } from "../../types/app";
 import { GameScores } from "../../types/game";
 
+interface PlayerDetail {
+  title: string;
+  scores: GameScores;
+}
+
 interface ScoreboardProps {
   copy: I18nCopy;
-  human: GameScores;
-  computer: GameScores;
+  playerDetails: Array<PlayerDetail>;
 }
 
 interface ScoreboardSectionProps {
-  title: string;
   copy: I18nCopy;
+  title: string;
   scores: GameScores;
 }
 
@@ -20,13 +24,13 @@ const ScoreboardSection = (props: ScoreboardSectionProps) => (
     <Typography variant="h4" component="h2">
       {props.title}
     </Typography>
-    <div>
+    <div className="Section_wins">
       {props.copy.wins}: {props.scores.wins}
     </div>
-    <div>
+    <div className="Section_losses">
       {props.copy.losses}: {props.scores.losses}
     </div>
-    <div>
+    <div className="Section_draws">
       {props.copy.draws}: {props.scores.draws}
     </div>
   </div>
@@ -34,16 +38,14 @@ const ScoreboardSection = (props: ScoreboardSectionProps) => (
 
 const Scoreboard = (props: ScoreboardProps) => (
   <div className={styles["Scoreboard"]}>
-    <ScoreboardSection
-      title={props.copy.player}
-      copy={props.copy}
-      scores={props.human}
-    />
-    <ScoreboardSection
-      title={props.copy.computer}
-      copy={props.copy}
-      scores={props.computer}
-    />
+    {props.playerDetails.map((playerInfo: PlayerDetail, index: number) => (
+      <ScoreboardSection
+        key={index}
+        copy={props.copy}
+        title={playerInfo.title}
+        scores={playerInfo.scores}
+      />
+    ))}
   </div>
 );
 
