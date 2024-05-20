@@ -29,12 +29,14 @@ describe("BoardContainer", () => {
     it("should render with correct number of rows", () => {
       renderWithProviders(<BoardContainer />, options);
       const table = screen.getByTestId("board-table");
+      // eslint-disable-next-line testing-library/no-node-access
       expect(table.getElementsByClassName("BoardRow").length).toBe(gridSize);
     });
 
     it("should render with correct number of cells", () => {
       renderWithProviders(<BoardContainer />, options);
       const table = screen.getByTestId("board-table");
+      // eslint-disable-next-line testing-library/no-node-access
       expect(table.getElementsByClassName("BoardCell").length).toBe(
         gridSize * gridSize,
       );

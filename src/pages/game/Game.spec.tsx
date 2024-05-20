@@ -1,4 +1,4 @@
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import Game from "./Game";
 
 jest.mock("../../containers/GameContainer", () => () => (
@@ -7,7 +7,7 @@ jest.mock("../../containers/GameContainer", () => () => (
 
 describe("Game page", () => {
   it("should render the game content to the player", () => {
-    const query = render(<Game />);
-    expect(query.getByText("Game Container")).toBeTruthy();
+    render(<Game />);
+    expect(screen.getByText("Game Container")).toBeTruthy();
   });
 });
