@@ -21,16 +21,16 @@ interface ScoreboardSectionProps {
 
 const ScoreboardSection = (props: ScoreboardSectionProps) => (
   <div className={styles["Scoreboard__section"]}>
-    <Typography variant="h4" component="h2">
+    <Typography className={styles["Section_title"]} variant="h4" component="h2">
       {props.title}
     </Typography>
-    <div className="Section_wins">
+    <div className={styles["Section_info"]}>
       {props.copy.wins}: {props.scores.wins}
     </div>
-    <div className="Section_losses">
+    <div className={styles["Section_info"]}>
       {props.copy.losses}: {props.scores.losses}
     </div>
-    <div className="Section_draws">
+    <div className={styles["Section_info"]}>
       {props.copy.draws}: {props.scores.draws}
     </div>
   </div>
