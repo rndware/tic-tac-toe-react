@@ -1,5 +1,5 @@
 import "@testing-library/jest-dom";
-import { cleanup, fireEvent, screen, waitFor } from "@testing-library/react";
+import { cleanup, fireEvent, screen } from "@testing-library/react";
 import { Mark } from "../types/game";
 import { HighlightColors } from "../types/player";
 import { renderWithProviders, RouterTestHarness } from "../utils/test-utils";
