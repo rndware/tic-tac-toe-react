@@ -26,7 +26,7 @@ export const markHistorySlice = createSlice({
       action: PayloadAction<{
         player?: Player;
         boardSnapshot: GridData;
-      }>
+      }>,
     ) => {
       const record: MarkRecord = {
         boardSnapshot: cloneDeep(action.payload.boardSnapshot),

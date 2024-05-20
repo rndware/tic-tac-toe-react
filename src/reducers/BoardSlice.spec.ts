@@ -23,20 +23,20 @@ describe("player reducer", () => {
   it("should mark square on grid", () => {
     expect(
       boardReducer(initialState, markSquare({ index: 1, mark: Mark.x }))
-        .gridData
+        .gridData,
     ).toEqual([0, Mark.x, 2, 3, 4, 5, 6, 7, 8]);
   });
 
   it("should set highlight indexes", () => {
     expect(
-      boardReducer(initialState, setHighlight([1, 2, 3])).highlighted
+      boardReducer(initialState, setHighlight([1, 2, 3])).highlighted,
     ).toEqual([1, 2, 3]);
   });
 
   it("should set highlight color", () => {
     expect(
       boardReducer(initialState, setHighlightColor(HighlightColors.red))
-        .highlightColor
+        .highlightColor,
     ).toEqual(HighlightColors.red);
   });
 });

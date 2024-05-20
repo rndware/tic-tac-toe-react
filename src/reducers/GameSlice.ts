@@ -66,7 +66,7 @@ let gameService: GameService;
 
 export const startGame = (): AppThunk => (dispatch, getState) => {
   dispatch(
-    appReset({ excludeReducers: ["players", "settings", "scoreHistory"] })
+    appReset({ excludeReducers: ["players", "settings", "scoreHistory"] }),
   );
   dispatch(start());
 
@@ -79,7 +79,7 @@ export const startGame = (): AppThunk => (dispatch, getState) => {
   dispatch(
     recordMarkHistory({
       boardSnapshot: getGridData(state),
-    })
+    }),
   );
 
   gameService = new GameService(difficulty, humanPlayer, computerPlayer);
@@ -121,7 +121,7 @@ const handleIfGameWon =
         recordScoreHistory({
           winner,
           boardSnapshot: markedGrid,
-        })
+        }),
       );
 
       dispatch(end());
@@ -145,7 +145,7 @@ const handlePlayerMove =
       recordMarkHistory({
         player: humanPlayer,
         boardSnapshot: updatedMarkedGrid,
-      })
+      }),
     );
   };
 
@@ -166,7 +166,7 @@ const handleComputerMove =
       recordMarkHistory({
         player: computerPlayer,
         boardSnapshot: updatedMarkedGrid,
-      })
+      }),
     );
   };
 
@@ -189,13 +189,13 @@ export const playMove = createAsyncThunk<void, GridIndex, { state: RootState }>(
     const updatedMarkedGrid = getGridData(getState());
 
     await dispatch(
-      handleComputerMove(updatedMarkedGrid, getComputerPlayer(firstState))
+      handleComputerMove(updatedMarkedGrid, getComputerPlayer(firstState)),
     );
 
     const finalMarkedGrid = getGridData(getState());
     dispatch(handleIfGameWon(finalMarkedGrid));
     dispatch(setIsPlayingMove(false));
-  }
+  },
 );
 
 export const getGameMode = (state: RootState): Mode => state.game.mode;

@@ -36,7 +36,7 @@ describe("BoardContainer", () => {
       renderWithProviders(<BoardContainer />, options);
       const table = screen.getByTestId("board-table");
       expect(table.getElementsByClassName("BoardCell").length).toBe(
-        gridSize * gridSize
+        gridSize * gridSize,
       );
     });
   });

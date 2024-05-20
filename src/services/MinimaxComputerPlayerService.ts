@@ -31,7 +31,7 @@ export default class MinimaxComputerPlayerService {
     const nextStep: NextGameState = Minimax.GameStep(
       board,
       this.symbols,
-      this.difficulty
+      this.difficulty,
     );
 
     this.winner = nextStep.winner;

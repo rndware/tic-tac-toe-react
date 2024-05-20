@@ -36,7 +36,7 @@ describe("player reducer", () => {
     };
 
     expect(
-      playerReducer(initialState, createHumanPlayer({ player })).human
+      playerReducer(initialState, createHumanPlayer({ player })).human,
     ).toEqual({
       ...player,
       playerType: PlayerType.human,
@@ -45,7 +45,7 @@ describe("player reducer", () => {
 
   it("should generate a computer player", () => {
     expect(
-      playerReducer(initialState, generateComputerPlayer()).computer
+      playerReducer(initialState, generateComputerPlayer()).computer,
     ).toEqual({
       name: "Mr. Computer",
       mark: Mark.x,

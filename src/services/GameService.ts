@@ -15,12 +15,12 @@ export default class GameService {
     difficulty: Difficulty,
     humanPlayer: Player,
     computerPlayer: Player,
-    thinkDelay: number = 300
+    thinkDelay: number = 300,
   ) {
     this.computerAI = new MinimaxComputerPlayerService(
       difficulty,
       humanPlayer.mark,
-      computerPlayer.mark
+      computerPlayer.mark,
     );
     this.humanPlayer = humanPlayer;
     this.computerPlayer = computerPlayer;
@@ -58,7 +58,7 @@ export default class GameService {
       if (
         lineIndexes.every(
           (index: GridIndex) =>
-            markedGrid[index] === this.getWinningPlayer()?.mark
+            markedGrid[index] === this.getWinningPlayer()?.mark,
         )
       ) {
         winningLine = lineIndexes;

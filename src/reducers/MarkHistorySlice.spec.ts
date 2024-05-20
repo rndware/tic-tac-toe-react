@@ -30,7 +30,7 @@ describe("mark history reducer", () => {
 
   it("should handle initial state", () => {
     expect(markHistoryReducer(undefined, { type: "unknown" })).toEqual(
-      initialState
+      initialState,
     );
   });
 
@@ -42,8 +42,8 @@ describe("mark history reducer", () => {
           recordMarkHistory({
             player: computerPlayer,
             boardSnapshot: moveOneSnapshot,
-          })
-        ).marksRecord
+          }),
+        ).marksRecord,
       ).toEqual([
         {
           madeBy: computerPlayer,
@@ -59,8 +59,8 @@ describe("mark history reducer", () => {
           recordMarkHistory({
             player: undefined,
             boardSnapshot: moveOneSnapshot,
-          })
-        ).marksRecord
+          }),
+        ).marksRecord,
       ).toEqual([
         {
           boardSnapshot: moveOneSnapshot,
@@ -93,7 +93,7 @@ describe("mark history reducer", () => {
     expect(markHistoryReducer(newState, revertToPreviousInteraction())).toEqual(
       {
         marksRecord: [],
-      }
+      },
     );
   });
 });

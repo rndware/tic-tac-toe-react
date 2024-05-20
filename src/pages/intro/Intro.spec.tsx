@@ -16,7 +16,7 @@ describe("Intro page", () => {
     query = render(
       <BrowserRouter>
         <Intro />
-      </BrowserRouter>
+      </BrowserRouter>,
     );
   });
 

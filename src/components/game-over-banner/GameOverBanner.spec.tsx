@@ -33,11 +33,11 @@ describe("GameOverBanner", () => {
           winningPlayer={player}
           onRestart={() => {}}
           onQuit={() => {}}
-        />
+        />,
       );
 
       expect(screen.getByTestId("game-over").className).toBe(
-        "GameOverBanner GameOverBanner--fadeIn"
+        "GameOverBanner GameOverBanner--fadeIn",
       );
     });
 
@@ -49,11 +49,11 @@ describe("GameOverBanner", () => {
           winningPlayer={player}
           onRestart={() => {}}
           onQuit={() => {}}
-        />
+        />,
       );
 
       expect(screen.getByText(/Game Over,/).textContent).toBe(
-        `Game Over, "${player.name}" has won.`
+        `Game Over, "${player.name}" has won.`,
       );
     });
 
@@ -65,11 +65,11 @@ describe("GameOverBanner", () => {
           winningPlayer={null}
           onRestart={() => {}}
           onQuit={() => {}}
-        />
+        />,
       );
 
       expect(screen.getByText(/Game Over,/).textContent).toBe(
-        `Game Over, Draw.`
+        `Game Over, Draw.`,
       );
     });
 
@@ -83,7 +83,7 @@ describe("GameOverBanner", () => {
           winningPlayer={null}
           onRestart={handleClick}
           onQuit={() => {}}
-        />
+        />,
       );
 
       fireEvent.click(screen.getByText("Restart"));
@@ -100,7 +100,7 @@ describe("GameOverBanner", () => {
           winningPlayer={null}
           onRestart={() => {}}
           onQuit={handleClick}
-        />
+        />,
       );
 
       fireEvent.click(screen.getByText("Quit"));

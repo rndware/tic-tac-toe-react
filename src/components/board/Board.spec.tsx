@@ -17,7 +17,7 @@ describe("Board", () => {
       render(<Board gridData={gridData} onClick={() => {}} />);
 
       expect(screen.getByTestId(bardTestId).className).toBe(
-        "Board__table Board__table--lined"
+        "Board__table Board__table--lined",
       );
     });
 
@@ -36,14 +36,14 @@ describe("Board", () => {
       render(<Board disabled={true} gridData={gridData} onClick={() => {}} />);
 
       expect(screen.getByTestId(bardTestId).className).toBe(
-        "Board__table Board__table--disabled Board__table--lined"
+        "Board__table Board__table--disabled Board__table--lined",
       );
     });
 
     it("should supppress click events made by the player", () => {
       const handleClick = jest.fn();
       render(
-        <Board disabled={true} gridData={gridData} onClick={handleClick} />
+        <Board disabled={true} gridData={gridData} onClick={handleClick} />,
       );
 
       fireEvent.click(screen.getByTestId(cellTestId));

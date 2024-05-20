@@ -26,7 +26,7 @@ interface SettingsFormProps {
 const renderSelectOptions = (
   key: string,
   enumOptions: EnumMap,
-  options: Options
+  options: Options,
 ) =>
   Object.keys(enumOptions).map((value: string) => (
     <MenuItem key={`${key}-options-item-${value}`} value={value}>

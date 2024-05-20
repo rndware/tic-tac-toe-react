@@ -13,7 +13,9 @@ $time-4: 200s;
 @function particles($max) {
   $val: 0px 0px $color-particle;
   @for $i from 1 through $max {
-    $val: #{$val}, random($spacing)+px random($spacing)+px $color-particle;
+    $val:
+      #{$val},
+      random($spacing) + px random($spacing) + px $color-particle;
   }
   @return $val;
 }
@@ -23,7 +25,8 @@ $time-4: 200s;
   border-radius: 50%;
 }
 
-.page-bg, .animation-wrapper {
+.page-bg,
+.animation-wrapper {
   position: fixed;
   top: 0;
   left: 0;
@@ -39,7 +42,8 @@ $time-4: 200s;
   z-index: -1;
 }
 
-.particle, .particle:after {
+.particle,
+.particle:after {
   background: transparent;
 }
 

@@ -48,19 +48,19 @@ describe("game reducer", () => {
 
   it("should set lock when playing a move", () => {
     expect(
-      gameReducer(initialState, setIsPlayingMove(true)).playingMove
+      gameReducer(initialState, setIsPlayingMove(true)).playingMove,
     ).toEqual(true);
   });
 
   it("should set winner of the game", () => {
     expect(
-      gameReducer(initialState, setWinner(Winner.aiPlayer)).winner
+      gameReducer(initialState, setWinner(Winner.aiPlayer)).winner,
     ).toEqual(Winner.aiPlayer);
   });
 
   it("should set winning player of the game", () => {
     expect(
-      gameReducer(initialState, setWinningPlayer(humanPlayer)).winningPlayer
+      gameReducer(initialState, setWinningPlayer(humanPlayer)).winningPlayer,
     ).toEqual(humanPlayer);
   });
 
@@ -120,7 +120,7 @@ describe("game reducer", () => {
       expect(GameService).toHaveBeenCalledWith(
         Difficulty.Easy,
         humanPlayer,
-        computerPlayer
+        computerPlayer,
       );
     });
   });

@@ -44,7 +44,7 @@ export const playersSlice = createSlice({
       state,
       action: PayloadAction<{
         player: Player;
-      }>
+      }>,
     ) => {
       state.human = {
         ...action.payload.player,

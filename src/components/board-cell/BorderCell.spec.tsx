@@ -20,11 +20,11 @@ describe("BorderCell", () => {
         isHighlighted={true}
         highlightColor={HighlightColors.red}
         onClick={() => {}}
-      />
+      />,
     );
 
     expect(screen.getByTestId(cellTestId).className).toBe(
-      "BoardCell BoardCell--highlighted-red"
+      "BoardCell BoardCell--highlighted-red",
     );
   });
 
@@ -38,7 +38,7 @@ describe("BorderCell", () => {
         isHighlighted={false}
         highlightColor={null}
         onClick={handleClick}
-      />
+      />,
     );
 
     fireEvent.click(screen.getByTestId(cellTestId));

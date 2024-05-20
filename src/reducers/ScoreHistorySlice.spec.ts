@@ -1,4 +1,3 @@
-import { HighlightColors, PlayerType } from "../types/player";
 import { Mark, Winner } from "../types/game";
 import scoreHistoryReducer, {
   History,
@@ -16,7 +15,7 @@ describe("score history reducer", () => {
 
   it("should handle initial state", () => {
     expect(scoreHistoryReducer(undefined, { type: "unknown" })).toEqual(
-      initialState
+      initialState,
     );
   });
 
@@ -27,8 +26,8 @@ describe("score history reducer", () => {
         recordScoreHistory({
           winner: Winner.aiPlayer,
           boardSnapshot: moveOneSnapshot,
-        })
-      ).scoreRecord
+        }),
+      ).scoreRecord,
     ).toEqual([
       {
         winner: Winner.aiPlayer,
@@ -38,13 +37,6 @@ describe("score history reducer", () => {
   });
 
   describe("wins draws and losses", () => {
-    const computerPlayer = {
-      name: "Mr. Computer",
-      mark: Mark.x,
-      color: HighlightColors.red,
-      playerType: PlayerType.computer,
-    };
-
     const newState = {
       scoreRecord: [
         {

@@ -27,7 +27,7 @@ const combinedReducer = combineReducers({
 
 function resetApp(
   state: RootState,
-  action: PayloadAction<{ excludeReducers: string[] }>
+  action: PayloadAction<{ excludeReducers: string[] }>,
 ): RootState {
   let newState: RootState = {};
   for (const reducer of action.payload.excludeReducers) {

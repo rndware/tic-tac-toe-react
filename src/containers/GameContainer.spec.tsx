@@ -46,7 +46,7 @@ describe("GameContainer", () => {
               highlightColor: HighlightColors.red,
             },
           },
-        }
+        },
       );
 
       const cell = query.getByTestId("board-cell-0");
@@ -59,7 +59,7 @@ describe("GameContainer", () => {
     it("should blur the game grid and controls area to the player", async () => {
       const container = query.getByTestId("board-container-wrapper");
       expect(container.className).toBe(
-        "BoardContainer__wrapper BoardContainer__wrapper--blurred"
+        "BoardContainer__wrapper BoardContainer__wrapper--blurred",
       );
     });
 

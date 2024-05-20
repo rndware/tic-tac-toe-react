@@ -8,14 +8,14 @@ describe("MinimaxComputerPlayerService", () => {
   const service = new MinimaxComputerPlayerService(
     Difficulty.Easy,
     Mark.o,
-    AIMark
+    AIMark,
   );
 
   describe("player gives board to AI player to start the game", () => {
     it("should return a makred board with an AI player move", () => {
       const board = range(9);
       expect(service.makeNextMove(board)).toEqual(
-        expect.arrayContaining([AIMark])
+        expect.arrayContaining([AIMark]),
       );
     });
 

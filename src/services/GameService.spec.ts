@@ -24,7 +24,7 @@ describe("GameService", () => {
     it("should call MinimaxComputerPlayerService to get the result", async () => {
       const spy = jest.spyOn(
         MinimaxComputerPlayerService.prototype,
-        "makeNextMove"
+        "makeNextMove",
       );
       const gridData = range(9);
       await service.doComputerMove(gridData);

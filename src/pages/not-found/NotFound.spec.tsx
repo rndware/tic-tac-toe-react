@@ -16,7 +16,7 @@ describe("Not found page", () => {
     query = render(
       <BrowserRouter>
         <NotFound />
-      </BrowserRouter>
+      </BrowserRouter>,
     );
   });
 

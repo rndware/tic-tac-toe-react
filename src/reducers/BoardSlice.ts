@@ -29,7 +29,7 @@ export const boardSlice = createSlice({
       action: PayloadAction<{
         index: GridIndex;
         mark: Mark;
-      }>
+      }>,
     ) => {
       state.gridData[action.payload.index] = action.payload.mark;
     },

@@ -26,7 +26,7 @@ export const scoreHistorySlice = createSlice({
       action: PayloadAction<{
         winner: Winner;
         boardSnapshot: GridData;
-      }>
+      }>,
     ) => {
       const record: ScoreRecord = {
         boardSnapshot: cloneDeep(action.payload.boardSnapshot),
@@ -46,13 +46,13 @@ export const { revertToPreviousScore, recordScoreHistory } =
 
 export const getPlayerScores = (state: RootState): GameScores => {
   const wins = state.scoreHistory.scoreRecord.filter(
-    (record: ScoreRecord) => record.winner === Winner.huPlayer
+    (record: ScoreRecord) => record.winner === Winner.huPlayer,
   ).length;
   const losses = state.scoreHistory.scoreRecord.filter(
-    (record: ScoreRecord) => record.winner === Winner.aiPlayer
+    (record: ScoreRecord) => record.winner === Winner.aiPlayer,
   ).length;
   const draws = state.scoreHistory.scoreRecord.filter(
-    (record: ScoreRecord) => record.winner === Winner.draw
+    (record: ScoreRecord) => record.winner === Winner.draw,
   ).length;
 
   return {
@@ -64,13 +64,13 @@ export const getPlayerScores = (state: RootState): GameScores => {
 
 export const getComputerScores = (state: RootState): GameScores => {
   const wins = state.scoreHistory.scoreRecord.filter(
-    (record: ScoreRecord) => record.winner === Winner.aiPlayer
+    (record: ScoreRecord) => record.winner === Winner.aiPlayer,
   ).length;
   const losses = state.scoreHistory.scoreRecord.filter(
-    (record: ScoreRecord) => record.winner === Winner.huPlayer
+    (record: ScoreRecord) => record.winner === Winner.huPlayer,
   ).length;
   const draws = state.scoreHistory.scoreRecord.filter(
-    (record: ScoreRecord) => record.winner === Winner.draw
+    (record: ScoreRecord) => record.winner === Winner.draw,
   ).length;
 
   return {
