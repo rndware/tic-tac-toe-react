@@ -13,7 +13,7 @@ describe("Index utils", () => {
 
   describe("sleep", () => {
     it("will sleep for n number of seconds", async () => {
-      expect(await sleep(10));
+      expect(await sleep(10)).toBeUndefined();
     });
   });
 });
