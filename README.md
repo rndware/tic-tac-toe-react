@@ -33,6 +33,7 @@ A simple Tic Tac Toe game built using Create React App.
 - ~~Add storybook with full component coverage~~
 - ~~Create settings page to change player difficulty~~
 - Create player form to input player details: name, age, colour etc.
+- Update unit tests to use `ReactDOMTestUtils.act`
 
 ## Setup
 
