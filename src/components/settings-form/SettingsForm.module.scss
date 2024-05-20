@@ -1,0 +1,15 @@
+@import "../../themes/_variables.scss";
+
+.Select {
+  width: 250px;
+}
+
+.SettingsForm {
+  &__formControl {
+    padding-bottom: $spacingDefault / 2;
+  }
+
+  &__controls {
+    padding-top: $spacingDefault;
+  }
+}

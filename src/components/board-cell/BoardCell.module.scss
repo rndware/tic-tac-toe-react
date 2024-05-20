@@ -1,0 +1,33 @@
+@import "../../themes/_variables.scss";
+
+$minScale: 1;
+$maxScale: 1.09;
+$animationSpeed: 0.5s;
+
+.BoardCell--highlighted {
+  svg {
+    animation: pulse $animationSpeed normal linear;
+  }
+
+  &-red {
+    @extend .BoardCell--highlighted;
+    color: $colorPlayerRed;
+  }
+
+  &-blue {
+    @extend .BoardCell--highlighted;
+    color: $colorPlayerBlue;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scaleX($minScale);
+  }
+  50% {
+    transform: scale3d($maxScale, $maxScale, $maxScale);
+  }
+  to {
+    transform: scaleX($minScale);
+  }
+}

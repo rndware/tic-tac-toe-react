@@ -1,0 +1,44 @@
+@import "../themes/_variables.scss";
+
+$blur: 4px;
+
+@keyframes imageBlurIn {
+  0% {
+    -webkit-filter: blur(0px);
+  }
+  25% {
+    -webkit-filter: blur(0px);
+  }
+  100% {
+    -webkit-filter: blur($blur);
+  }
+}
+
+@keyframes imageFadeIn {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.BoardContainer__wrapper {
+  display: inline-flex;
+
+  &--blurred {
+    filter: blur($blur);
+    animation: imageBlurIn $gameTransitionSpeed;
+  }
+
+  .PlayableGameWrapper {
+    padding: 0 1rem;
+  }
+
+  .GameInfoWrapper {
+    padding: 0 1rem;
+  }
+}

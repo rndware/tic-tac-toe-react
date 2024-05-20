@@ -1,46 +1,44 @@
-# Getting Started with Create React App
+# Tic Tac Toe (In space)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) TS template.
+A simple Tic Tac Toe game built using Create React App.
 
-## Available Scripts
+<img src="https://github.com/rndware/tic-tac-toe/blob/master/media/playing.gif" width="65%"/>
+</br>
+<img src="https://github.com/rndware/tic-tac-toe/blob/master/media/playing2.gif" width="65%"/>
 
-In the project directory, you can run:
+## Highlights
 
-### `npm start`
+- Written in React/Redux/Typescript
+- Use of functional and 'dumb' components where possible
+- Unit tested with BDD where possible
+- Styled using Sass modules with BEM syntax
+- Used Material UI for icons, inputs and buttons
+- Decoupled board from game logic
+- Use of services to decouple AI logic from slices
+- Keeping reducers 'flat' to avoid heavily nested data
+- I18n in English and German
+- Use of local storage for saving settings data
+- Undo button to replay interactions using board history
+- Storybook component explorer integration
+- Partially responsive
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## TO-DO
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- Remove all 'any' types remaining
+- Unit test all remaining modules
+- ~~Add in `classnames` for class toggling~~
+- Reduce number of dispatch calls in `"game/playMove"` Thunk
+- Create a per region config file to replace static const data
+- Make game service no longer global in module
+- Create util for toggling element modifier e.g. `--highlight`
+- ~~Add storybook with full component coverage~~
+- ~~Create settings page to change player difficulty~~
+- Create player form to input player details: name, age, colour etc.
 
-### `npm test`
+## Setup
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Run `npm i` to install packages
 
-### `npm run build`
+Run `npm test` to run unit tests
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Run `npm start` to run locally on [http://localhost:3000](http://localhost:3000)

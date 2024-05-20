@@ -1,0 +1,16 @@
+@import "../../themes/_variables.scss";
+
+.IntroPage__buttonContainer {
+  margin: $spacingDefault 10px;
+  padding: 10px;
+  display: inline-flex;
+  flex-direction: column;
+
+  a:last-of-type {
+    margin-top: 15px;
+  }
+}
+
+.IntroPage__content {
+  padding: $spacingDefault;
+}

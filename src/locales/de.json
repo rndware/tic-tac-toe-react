@@ -1,0 +1,42 @@
+{
+  "settingsPage": {
+    "title": "Einstellungen",
+    "difficulty": {
+      "label": "Schwierigkeitsgrad des Spiels",
+      "options": {
+        "easy": "Einfach",
+        "normal": "Normal",
+        "hard": "Schwer"
+      }
+    },
+    "lang": {
+      "label": "Sprache",
+      "options": {
+        "en": "Englisch",
+        "de": "Deutsch"
+      }
+    },
+    "done": "Fertig"
+  },
+  "introPage": {
+    "title": "Tic Tac Toe 🚀",
+    "description": "Vor langer Zeit in einer weit, weit entfernten Galaxie...",
+    "startGame": "Spiel beginnen",
+    "options": "Optionen"
+  },
+  "gamePage": {
+    "winner": "Spiel vorbei, \"{{name}}\" hat gewonnen.",
+    "draw": "Spiel vorbei, Unentschieden.",
+    "restart": "Nächstes Spiel",
+    "quit": "Aufhören",
+    "undo": "Rückgängig machen",
+    "player": "Spieler",
+    "computer": "Computer",
+    "wins": "Gewinnt",
+    "losses": "Verluste",
+    "draws": "Zieht"
+  },
+  "notFoundPage": {
+    "description": "Seite nicht gefunden... Im Weltraum verloren..."
+  }
+}

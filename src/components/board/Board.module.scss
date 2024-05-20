@@ -1,0 +1,60 @@
+@import "../../themes/_variables.scss";
+
+$borderWidth: 3px;
+
+$border: $borderWidth solid $gridColor;
+
+.v {
+  border-left: $border;
+  border-right: $border;
+}
+
+.h {
+  border-top: $border;
+  border-bottom: $border;
+}
+
+.Board__table {
+  margin: 0 auto;
+  padding: 20px;
+  border-collapse: collapse;
+  color: $colorText;
+  cursor: pointer;
+
+  &--disabled {
+    cursor: initial;
+  }
+
+  &--lined {
+    tr:first-of-type {
+      td:nth-child(even) {
+        @extend .v;
+      }
+    }
+
+    tr:nth-child(even) {
+      td:first-of-type {
+        @extend .h;
+      }
+      td:nth-child(even) {
+        @extend .v;
+        @extend .h;
+      }
+      td:last-of-type {
+        @extend .h;
+      }
+    }
+
+    tr:last-of-type {
+      td:nth-child(even) {
+        @extend .v;
+      }
+    }
+  }
+
+  &--grid {
+    td {
+      border: $border;
+    }
+  }
+}

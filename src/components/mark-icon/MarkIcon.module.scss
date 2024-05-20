@@ -1,0 +1,12 @@
+$iconSize: 50px;
+
+.MarkIcon { 
+  width: $iconSize;
+  height: $iconSize;
+  margin: 10px;
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+}
