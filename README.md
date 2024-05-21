@@ -11,6 +11,7 @@ A simple Tic Tac Toe game built using Create React App.
 - Unit tested with BDD where possible
 - Styled using Sass modules with BEM syntax
 - Used Material UI for icons, inputs and buttons
+- Storybook component explorer integration
 - Decoupled board from game logic
 - Use of services to decouple AI logic from slices
 - Keeping reducers 'flat' to avoid heavily nested data
@@ -23,7 +24,6 @@ A simple Tic Tac Toe game built using Create React App.
 ## TO-DO
 
 - Remove all 'any' types remaining
-- Storybook component explorer integration
 - Unit test all remaining modules
 - ~~Add in `classnames` for class toggling~~
 - Reduce number of dispatch calls in `"game/playMove"` Thunk
