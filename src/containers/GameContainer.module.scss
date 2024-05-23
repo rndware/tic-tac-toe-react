@@ -28,6 +28,8 @@ $blur: 4px;
 
 .BoardContainer__wrapper {
   display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
 
   &--blurred {
     filter: blur($blur);
