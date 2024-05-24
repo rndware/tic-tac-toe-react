@@ -30,9 +30,9 @@ const BoardCell = (props: React.PropsWithChildren<BoardCellProps>) => {
       data-testid={fullId}
       onClick={props.onClick}
     >
-      <CellSlot.Renderer childs={props.children} value={props.value}>
-        <MarkIcon value={props.value} />
-      </CellSlot.Renderer>
+      {(props.children && (
+        <CellSlot.Renderer childs={props.children} value={props.value} />
+      )) || <MarkIcon value={props.value} />}
     </div>
   );
 };

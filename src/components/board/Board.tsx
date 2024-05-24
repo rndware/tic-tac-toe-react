@@ -44,14 +44,16 @@ const BoardRow = (props: React.PropsWithChildren<BoardRowProps>) => (
             highlightColor={props.highlightColor}
             onClick={(e: MouseEvent) => props.onClick(e, flatIndex)}
           >
-            <CellSlot>
-              {(args) => (
-                <BoardRowCellSlot.Renderer
-                  childs={props.children}
-                  value={args.value}
-                />
-              )}
-            </CellSlot>
+            {props.children && (
+              <CellSlot>
+                {(args) => (
+                  <BoardRowCellSlot.Renderer
+                    childs={props.children}
+                    value={args.value}
+                  />
+                )}
+              </CellSlot>
+            )}
           </BoardCell>
         </td>
       );
@@ -89,14 +91,16 @@ const Board = (props: React.PropsWithChildren<BoardProps>) => {
                 !props.disabled && props.onClick(e, index)
               }
             >
-              <BoardRowCellSlot>
-                {(args) => (
-                  <BoardCellSlot.Renderer
-                    childs={props.children}
-                    value={args.value}
-                  />
-                )}
-              </BoardRowCellSlot>
+              {props.children && (
+                <BoardRowCellSlot>
+                  {(args) => (
+                    <BoardCellSlot.Renderer
+                      childs={props.children}
+                      value={args.value}
+                    />
+                  )}
+                </BoardRowCellSlot>
+              )}
             </BoardRow>
           ))}
         </tbody>
