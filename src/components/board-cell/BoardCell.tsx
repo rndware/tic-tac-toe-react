@@ -3,6 +3,7 @@ import classNames from "classnames";
 import { GridIndex, GridItem } from "../../types/grid";
 import { HighlightColors } from "../../types/player";
 import MarkIcon from "../mark-icon";
+import { createSlot } from "react-slotify";
 
 import styles from "./BoardCell.module.scss";
 
@@ -14,7 +15,9 @@ interface BoardCellProps {
   highlightColor?: HighlightColors | null;
 }
 
-const BoardCell = (props: BoardCellProps) => {
+export const BoardCellSlot = createSlot<{ value: GridItem }>();
+
+const BoardCell = (props: React.PropsWithChildren<BoardCellProps>) => {
   const fullId = props.id !== undefined ? `board-cell-${props.id}` : undefined;
   return (
     <div
@@ -27,7 +30,9 @@ const BoardCell = (props: BoardCellProps) => {
       data-testid={fullId}
       onClick={props.onClick}
     >
-      <MarkIcon value={props.value} />
+      <BoardCellSlot.Renderer childs={props.children} value={props.value}>
+        <MarkIcon value={props.value} />
+      </BoardCellSlot.Renderer>
     </div>
   );
 };

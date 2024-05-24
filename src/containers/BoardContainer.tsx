@@ -8,10 +8,10 @@ import {
   getHighlighted,
   getBoardHighlightColor,
 } from "../reducers/BoardSlice";
+import { BoardSlot } from "../components/board/Board";
 
 const BoardContainer = () => {
   const dispatch = useAppDispatch();
-
   return (
     <Board
       disabled={useAppSelector(getGameMode) === Mode.Ended}
@@ -19,7 +19,9 @@ const BoardContainer = () => {
       highlightColor={useAppSelector(getBoardHighlightColor)}
       highlighted={useAppSelector(getHighlighted)}
       onClick={(_, index) => dispatch(playMove(index))}
-    />
+    >
+      <BoardSlot>{(args) => <div>baz</div>}</BoardSlot>
+    </Board>
   );
 };
 
