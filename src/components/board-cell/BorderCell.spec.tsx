@@ -1,6 +1,6 @@
 import { render, screen, cleanup, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import BoardCell, { BoardCellSlot } from "./BoardCell";
+import BoardCell, { CellSlot } from "./BoardCell";
 import { HighlightColors } from "../../types/player";
 
 afterEach(() => {
@@ -45,7 +45,7 @@ describe("BorderCell", () => {
     expect(handleClick).toHaveBeenCalledTimes(1);
   });
 
-  it("should allow a slot to be specified", () => {
+  it("should allow cell slot to be specified", () => {
     const handleClick = jest.fn();
 
     render(
@@ -56,9 +56,9 @@ describe("BorderCell", () => {
         highlightColor={null}
         onClick={handleClick}
       >
-        <BoardCellSlot>
+        <CellSlot>
           {(args) => <div data-testid={"val"}>{args.value}</div>}
-        </BoardCellSlot>
+        </CellSlot>
       </BoardCell>,
     );
 

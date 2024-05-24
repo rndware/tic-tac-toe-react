@@ -8,7 +8,7 @@ import BoardCell from "../board-cell";
 import { createSlot } from "react-slotify";
 
 import styles from "./Board.module.scss";
-import { BoardCellSlot } from "../board-cell/BoardCell";
+import { CellSlot } from "../board-cell/BoardCell";
 
 interface BoardProps {
   layout?: "grid" | "lined";
@@ -29,7 +29,7 @@ interface BoardRowProps {
   onClick: (e: MouseEvent, index: GridIndex) => void;
 }
 
-export const BoardRowSlot = createSlot<{ value: GridItem }>();
+export const BoardRowCellSlot = createSlot<{ value: GridItem }>();
 
 const BoardRow = (props: React.PropsWithChildren<BoardRowProps>) => (
   <tr className="BoardRow">
@@ -44,16 +44,14 @@ const BoardRow = (props: React.PropsWithChildren<BoardRowProps>) => (
             highlightColor={props.highlightColor}
             onClick={(e: MouseEvent) => props.onClick(e, flatIndex)}
           >
-            <BoardCellSlot>
+            <CellSlot>
               {(args) => (
-                <BoardRowSlot.Renderer
+                <BoardRowCellSlot.Renderer
                   childs={props.children}
                   value={args.value}
-                >
-                  <div>hello world</div>
-                </BoardRowSlot.Renderer>
+                />
               )}
-            </BoardCellSlot>
+            </CellSlot>
           </BoardCell>
         </td>
       );
@@ -61,7 +59,7 @@ const BoardRow = (props: React.PropsWithChildren<BoardRowProps>) => (
   </tr>
 );
 
-export const BoardSlot = createSlot<{ value: GridItem }>();
+export const BoardCellSlot = createSlot<{ value: GridItem }>();
 
 const Board = (props: React.PropsWithChildren<BoardProps>) => {
   const size = props.gridSize || gridSize;
@@ -91,16 +89,14 @@ const Board = (props: React.PropsWithChildren<BoardProps>) => {
                 !props.disabled && props.onClick(e, index)
               }
             >
-              <BoardRowSlot>
+              <BoardRowCellSlot>
                 {(args) => (
-                  <BoardSlot.Renderer
+                  <BoardCellSlot.Renderer
                     childs={props.children}
                     value={args.value}
-                  >
-                    <div>test</div>
-                  </BoardSlot.Renderer>
+                  />
                 )}
-              </BoardRowSlot>
+              </BoardRowCellSlot>
             </BoardRow>
           ))}
         </tbody>
