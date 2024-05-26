@@ -4,6 +4,8 @@ A simple Tic Tac Toe game built using Create React App.
 
 <img src="https://github.com/rndware/tic-tac-toe-react/blob/master/media/play.gif" width="65%"/>
 
+<img src="https://github.com/rndware/tic-tac-toe-react/blob/master/media/translate.gif" width="65%"/>
+
 Note: audit issues are not due to create-react-app: https://overreacted.io/npm-audit-broken-by-design/
 
 ## Highlights
