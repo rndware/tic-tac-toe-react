@@ -30,8 +30,8 @@
     "restart": "Nächstes Spiel",
     "quit": "Aufhören",
     "undo": "Rückgängig machen",
-    "player": "Spieler",
-    "computer": "Computer",
+    "player": "Spieler 🎲",
+    "computer": "Computer 🤖",
     "wins": "Gewinnt",
     "losses": "Verluste",
     "draws": "Zieht"
