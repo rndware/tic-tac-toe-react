@@ -29,7 +29,10 @@ interface BoardRowProps {
   onClick: (e: MouseEvent, index: GridIndex) => void;
 }
 
-export const BoardRowCellSlot = createSlot<{ value: GridItem }>();
+export const BoardRowCellSlot = createSlot<{
+  value: GridItem;
+  index: number | undefined;
+}>();
 
 const BoardRow = (props: React.PropsWithChildren<BoardRowProps>) => (
   <tr className="BoardRow">
@@ -48,6 +51,7 @@ const BoardRow = (props: React.PropsWithChildren<BoardRowProps>) => (
               <CellSlot>
                 {(args) => (
                   <BoardRowCellSlot.Renderer
+                    index={flatIndex}
                     childs={props.children}
                     value={args.value}
                   />
@@ -61,7 +65,10 @@ const BoardRow = (props: React.PropsWithChildren<BoardRowProps>) => (
   </tr>
 );
 
-export const BoardCellSlot = createSlot<{ value: GridItem }>();
+export const BoardCellSlot = createSlot<{
+  value: GridItem;
+  index: number | undefined;
+}>();
 
 const Board = (props: React.PropsWithChildren<BoardProps>) => {
   const size = props.gridSize || gridSize;
@@ -95,6 +102,7 @@ const Board = (props: React.PropsWithChildren<BoardProps>) => {
                 <BoardRowCellSlot>
                   {(args) => (
                     <BoardCellSlot.Renderer
+                      index={args.index}
                       childs={props.children}
                       value={args.value}
                     />

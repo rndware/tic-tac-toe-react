@@ -15,7 +15,10 @@ interface BoardCellProps {
   highlightColor?: HighlightColors | null;
 }
 
-export const CellSlot = createSlot<{ value: GridItem }>();
+export const CellSlot = createSlot<{
+  value: GridItem;
+  id: GridIndex | undefined;
+}>();
 
 const BoardCell = (props: React.PropsWithChildren<BoardCellProps>) => {
   const fullId = props.id !== undefined ? `board-cell-${props.id}` : undefined;
@@ -31,7 +34,11 @@ const BoardCell = (props: React.PropsWithChildren<BoardCellProps>) => {
       onClick={props.onClick}
     >
       {(props.children && (
-        <CellSlot.Renderer childs={props.children} value={props.value} />
+        <CellSlot.Renderer
+          childs={props.children}
+          value={props.value}
+          id={props.id}
+        />
       )) || <MarkIcon value={props.value} />}
     </div>
   );
