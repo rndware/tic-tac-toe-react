@@ -47,6 +47,7 @@ describe("BorderCell", () => {
 
   it("should allow cell slot to be specified", () => {
     const handleClick = jest.fn();
+    const testId = "replaced-cell";
 
     render(
       <BoardCell
@@ -57,11 +58,11 @@ describe("BorderCell", () => {
         onClick={handleClick}
       >
         <CellSlot>
-          {(args) => <div data-testid={"val"}>{args.value}</div>}
+          {(args) => <div data-testid={testId}>{args.value}</div>}
         </CellSlot>
       </BoardCell>,
     );
 
-    expect(screen.getByTestId("val").innerHTML).toBe("1");
+    expect(screen.getByTestId(testId).innerHTML).toBe(value.toString());
   });
 });

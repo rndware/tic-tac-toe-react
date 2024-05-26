@@ -52,9 +52,7 @@ describe("GameOverBanner", () => {
         />,
       );
 
-      expect(screen.getByText(/Game Over,/).textContent).toBe(
-        `Game Over, "${player.name}" has won.`,
-      );
+      expect(screen.getByText(/Game Over,/).textContent).toBe(copy.winner);
     });
 
     it("should display game over draw message if a draw", () => {
@@ -68,9 +66,7 @@ describe("GameOverBanner", () => {
         />,
       );
 
-      expect(screen.getByText(/Game Over,/).textContent).toBe(
-        `Game Over, Draw.`,
-      );
+      expect(screen.getByText(/Game Over,/).textContent).toBe(copy.draw);
     });
 
     it("should call restart when a player selects the restart button", () => {
@@ -86,7 +82,7 @@ describe("GameOverBanner", () => {
         />,
       );
 
-      fireEvent.click(screen.getByText("Restart"));
+      fireEvent.click(screen.getByText(copy.restart));
       expect(handleClick).toHaveBeenCalledTimes(1);
     });
 
@@ -103,7 +99,7 @@ describe("GameOverBanner", () => {
         />,
       );
 
-      fireEvent.click(screen.getByText("Quit"));
+      fireEvent.click(screen.getByText(copy.quit));
       expect(handleClick).toHaveBeenCalledTimes(1);
     });
   });
