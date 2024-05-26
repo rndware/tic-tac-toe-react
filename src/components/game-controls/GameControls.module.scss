@@ -1,3 +1,11 @@
+@import "../../themes/_variables.scss";
+
 .GameControls {
   padding: 40px 0;
+  display: inline-flex;
+  flex-direction: column;
+
+  button:last-of-type {
+    margin-top: $buttonSpacer;
+  }
 }
