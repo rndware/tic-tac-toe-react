@@ -1,10 +1,12 @@
 import React, { MouseEvent } from "react";
 import classNames from "classnames";
+import { createSlot } from "react-slotify";
+
 import { HighlightColors } from "../../types/player";
 import { GridIndex, GridData, GridItem } from "../../types/grid";
 import { chunkArray } from "../../utils";
 import { gridSize } from "../../const/gridData";
-import BoardCell from "../board-cell";
+import { BoardRow, BoardRowCellSlot } from "./BoardRow";
 
 import styles from "./Board.module.scss";
 
@@ -18,35 +20,12 @@ interface BoardProps {
   onClick: (e: MouseEvent, index: GridIndex) => void;
 }
 
-interface BoardRowProps {
-  gridSize: number;
-  gridItems: GridData;
-  indexRow: GridIndex;
-  highlighted?: GridIndex[];
-  highlightColor?: HighlightColors;
-  onClick: (e: MouseEvent, index: GridIndex) => void;
-}
+export const BoardCellSlot = createSlot<{
+  value: GridItem;
+  index: GridIndex;
+}>();
 
-const BoardRow = (props: BoardRowProps) => (
-  <tr className="BoardRow">
-    {props.gridItems.map((gridItem: GridItem, indexColumn: GridIndex) => {
-      const flatIndex = props.indexRow * props.gridSize + indexColumn;
-      return (
-        <td key={`board-row-cell-${flatIndex}`} className="BoardRow__cell">
-          <BoardCell
-            id={flatIndex}
-            value={gridItem}
-            isHighlighted={props.highlighted?.includes(flatIndex)}
-            highlightColor={props.highlightColor}
-            onClick={(e: MouseEvent) => props.onClick(e, flatIndex)}
-          />
-        </td>
-      );
-    })}
-  </tr>
-);
-
-const Board = (props: BoardProps) => {
+const Board = (props: React.PropsWithChildren<BoardProps>) => {
   const size = props.gridSize || gridSize;
 
   const chunckedArray: GridData[] = chunkArray(props.gridData, size);
@@ -70,10 +49,22 @@ const Board = (props: BoardProps) => {
               indexRow={indexRow}
               highlighted={props.highlighted}
               highlightColor={props.highlightColor}
-              onClick={(e: MouseEvent, index: GridIndex) =>
+              onClick={(e: any, index: GridIndex) =>
                 !props.disabled && props.onClick(e, index)
               }
-            />
+            >
+              {props.children && (
+                <BoardRowCellSlot>
+                  {(args) => (
+                    <BoardCellSlot.Renderer
+                      index={args.index}
+                      childs={props.children}
+                      value={args.value}
+                    />
+                  )}
+                </BoardRowCellSlot>
+              )}
+            </BoardRow>
           ))}
         </tbody>
       </table>

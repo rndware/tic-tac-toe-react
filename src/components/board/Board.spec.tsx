@@ -1,7 +1,7 @@
 import { render, screen, cleanup, fireEvent } from "@testing-library/react";
 import { range } from "lodash";
 import "@testing-library/jest-dom";
-import Board from "./Board";
+import Board, { BoardCellSlot } from "./Board";
 
 afterEach(() => {
   cleanup();
@@ -49,6 +49,30 @@ describe("Board", () => {
       fireEvent.click(screen.getByTestId(cellTestId));
 
       expect(handleClick).toHaveBeenCalledTimes(0);
+    });
+
+    it("should allow cell slot to be specified", () => {
+      render(
+        <Board gridData={gridData} onClick={() => {}}>
+          <BoardCellSlot>
+            {(args) => (
+              <div
+                className="ReplacedSlot"
+                data-testid={"replaced-cell-" + args.index}
+              >
+                {"ReplacedCell" + args.value}
+              </div>
+            )}
+          </BoardCellSlot>
+        </Board>,
+      );
+
+      expect(screen.getByTestId("replaced-cell-1").innerHTML).toBe(
+        "ReplacedCell1",
+      );
+      expect(screen.getByTestId("replaced-cell-2").innerHTML).toBe(
+        "ReplacedCell2",
+      );
     });
   });
 });

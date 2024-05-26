@@ -24,15 +24,11 @@ const ScoreboardSection = (props: ScoreboardSectionProps) => (
     <Typography className={styles["Section_title"]} variant="h4" component="h2">
       {props.title}
     </Typography>
-    <div className={styles["Section_info"]}>
-      {props.copy.wins}: {props.scores.wins}
-    </div>
-    <div className={styles["Section_info"]}>
-      {props.copy.losses}: {props.scores.losses}
-    </div>
-    <div className={styles["Section_info"]}>
-      {props.copy.draws}: {props.scores.draws}
-    </div>
+    {Object.entries(props.scores).map(([key, value]) => (
+      <div key={key} className={styles["Section_info"]}>
+        {props.copy[key]}: {value}
+      </div>
+    ))}
   </div>
 );
 

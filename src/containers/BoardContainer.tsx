@@ -11,7 +11,6 @@ import {
 
 const BoardContainer = () => {
   const dispatch = useAppDispatch();
-
   return (
     <Board
       disabled={useAppSelector(getGameMode) === Mode.Ended}
