@@ -45,10 +45,19 @@ export default class GameService {
         ? this.humanPlayer
         : this.computerPlayer;
     } else {
+      // return null for a draw
       return null;
     }
   }
 
+  /**
+   * Iterates through all predefined lines (rows, columns, diagonals)
+   * and checks if any of these lines are fully occupied by the winning player's mark.
+   * If a winning line is found, it is returned immediately to avoid unnecessary checks.
+   *
+   * @param markedGrid - The current state of the game grid, with each cell marked by a player's mark.
+   * @returns GridIndex[] - An array of grid indices representing the winning line. Returns an empty array if no winning line is found.
+   */
   getWinningLine(markedGrid: GridData): GridIndex[] {
     const allIndexes = [rowIndexes, columnIndexes, diagnalIndexes].flat();
 

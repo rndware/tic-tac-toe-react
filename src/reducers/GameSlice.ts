@@ -93,13 +93,20 @@ export const undoInteraction = (): AppThunk => (dispatch, getState) => {
   }
 };
 
+/**
+ * Checks if mark has already been applied
+ * @param markedGrid
+ * @param index - Index of new mark
+ * @returns Boolean - Has mark been previously applied
+ */
+
 function freeToMarkAtIndex(markedGrid: GridData, index: GridIndex): boolean {
   return isGridIndex(markedGrid[index]);
 }
 
 /**
  * Checks if game has been won, logs the winner and finishes the game
- * @param markedGrid
+ * @param markedGrid - Grid that has been previously marked
  * @returns
  */
 const handleIfGameWon =
@@ -151,8 +158,8 @@ const handlePlayerMove =
 
 /**
  * Records computer's mark on grid and logs the move
- * @param index
- * @param computerPlayer
+ * @param markedGrid - Previously marked grid
+ * @param computerPlayer - Computer player
  * @returns
  */
 const handleComputerMove =
@@ -170,6 +177,19 @@ const handleComputerMove =
     );
   };
 
+/**
+ * Handles a player's move in game.
+ *
+ * 1. Checks if the move is valid (the cell is free, the game is in the playing mode, and no other move is currently being processed).
+ * 2. Dispatches the player's move and marks the cell.
+ * 3. Executes the computer's move in response.
+ * 4. Checks if the game has been won after both moves.
+ * 5. Updates the game state accordingly.
+ *
+ * @param index - The index of the cell where the player wants to make a move.
+ * @param dispatch - The dispatch function to send actions to the store.
+ * @param getState - The function to get the current state of the store.
+ */
 export const playMove = createAsyncThunk<void, GridIndex, { state: RootState }>(
   "game/playMove",
   async (index: GridIndex, { dispatch, getState }) => {
