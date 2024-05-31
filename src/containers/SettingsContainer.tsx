@@ -11,7 +11,9 @@ import {
   getLanguage,
   setLanguage,
 } from "../reducers/SettingsSlice";
-import SettingsForm, { FormControlData } from "../components/settings-form";
+import SettingsForm, {
+  SelectFormControlData,
+} from "../components/settings-form";
 
 const SettingsContainer = () => {
   const dispatch = useAppDispatch();
@@ -30,7 +32,7 @@ const SettingsContainer = () => {
 
   const settingsCopy: I18nCopy = t("settingsPage", { returnObjects: true });
 
-  const formControls: FormControlData[] = [
+  const selectFormControls: SelectFormControlData[] = [
     {
       key: "difficulty",
       copy: settingsCopy.difficulty,
@@ -52,7 +54,9 @@ const SettingsContainer = () => {
     },
   ];
 
-  return <SettingsForm formControls={formControls} copy={settingsCopy} />;
+  return (
+    <SettingsForm selectFormControls={selectFormControls} copy={settingsCopy} />
+  );
 };
 
 export default SettingsContainer;

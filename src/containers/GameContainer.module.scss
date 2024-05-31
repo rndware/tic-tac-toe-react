@@ -26,6 +26,13 @@ $blur: 4px;
   }
 }
 
+.GameContainer {
+  animation: imageFadeIn 1s;
+  position: relative;
+  background: $colorBackground;
+  padding: $spacingDefault;
+}
+
 .BoardContainer__wrapper {
   display: inline-flex;
   flex-wrap: wrap;
@@ -37,10 +44,10 @@ $blur: 4px;
   }
 
   .PlayableGameWrapper {
-    padding: 0 1rem;
+    padding: 0 40px;
   }
 
   .GameInfoWrapper {
-    padding: 0 1rem;
+    padding: 0 $spacingDefault;
   }
 }

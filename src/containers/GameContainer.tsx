@@ -24,7 +24,7 @@ const GameContainer = () => {
   }, [dispatch]);
 
   return (
-    <div className={styles.GameContainer}>
+    <div className={styles["GameContainer"]}>
       <div
         data-testid="board-container-wrapper"
         className={classNames({

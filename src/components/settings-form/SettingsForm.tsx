@@ -20,7 +20,7 @@ type Options = { [key: string]: string };
 
 interface SettingsFormProps {
   copy: I18nCopy;
-  formControls: FormControlData[];
+  selectFormControls: SelectFormControlData[];
 }
 
 const renderSelectOptions = (
@@ -34,7 +34,7 @@ const renderSelectOptions = (
     </MenuItem>
   ));
 
-export interface FormControlData {
+export interface SelectFormControlData {
   key: string;
   copy: I18nCopy;
   value: string;
@@ -43,8 +43,8 @@ export interface FormControlData {
   options: Options;
 }
 
-const renderFormControls = (formControls: FormControlData[]) =>
-  formControls.map((item: FormControlData) => (
+const renderSelectFormControls = (formControls: SelectFormControlData[]) =>
+  formControls.map((item: SelectFormControlData) => (
     <div
       key={`form-control-item-${item.key}`}
       className={styles.SettingsForm__formControl}
@@ -67,7 +67,7 @@ const renderFormControls = (formControls: FormControlData[]) =>
 
 const SettingsForm = (props: SettingsFormProps) => (
   <form className={styles.SettingsForm} noValidate autoComplete="off">
-    {renderFormControls(props.formControls)}
+    {renderSelectFormControls(props.selectFormControls)}
     <div className={styles.SettingsForm__controls}>
       <Button
         type="submit"
