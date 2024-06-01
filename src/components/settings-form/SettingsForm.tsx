@@ -21,6 +21,7 @@ type Options = { [key: string]: string };
 interface SettingsFormProps {
   copy: I18nCopy;
   selectFormControls: SelectFormControlData[];
+  actionButtons: ActionButtonData[];
 }
 
 const renderSelectOptions = (
@@ -41,6 +42,12 @@ export interface SelectFormControlData {
   enum: EnumMap;
   onChange: (e: SelectChangeEvent<string>) => void;
   options: Options;
+}
+
+export interface ActionButtonData {
+  key: string;
+  copy: I18nCopy;
+  onClick: (e: any) => void;
 }
 
 const SelectFormControl = (item: SelectFormControlData) => (
@@ -64,19 +71,26 @@ const SelectFormControl = (item: SelectFormControlData) => (
   </div>
 );
 
+const ActionButton = (item: ActionButtonData) => (
+  <Button type="submit" color="primary" variant="contained">
+    {item.copy.label}
+  </Button>
+);
+
 const SettingsForm = (props: SettingsFormProps) => (
-  <form className={styles.SettingsForm} noValidate autoComplete="off">
-    {props.selectFormControls.map((control) => (
-      <SelectFormControl {...control} />
-    ))}
-    <div className={styles.SettingsForm__controls}>
-      <Button
-        type="submit"
-        color="primary"
-        variant="contained"
-        component={Link}
-        to={"/"}
-      >
+  <form className={styles["SettingsForm"]} noValidate autoComplete="off">
+    <div className={styles["SettingsForm__selects"]}>
+      {props.selectFormControls.map((control) => (
+        <SelectFormControl {...control} />
+      ))}
+    </div>
+    <div className={styles["SettingsForm__actions"]}>
+      {props.actionButtons.map((actionButton) => (
+        <ActionButton {...actionButton} />
+      ))}
+    </div>
+    <div className={styles["SettingsForm__controls"]}>
+      <Button type="submit" color="secondary" component={Link} to={"/"}>
         {props.copy.done}
       </Button>
     </div>

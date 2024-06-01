@@ -16,6 +16,9 @@
         "de": "Deutsch"
       }
     },
+    "resetScores": {
+      "label": "Punkte zurücksetzen"
+    },
     "done": "Fertig"
   },
   "introPage": {

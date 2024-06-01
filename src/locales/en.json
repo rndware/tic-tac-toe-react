@@ -16,6 +16,9 @@
         "de": "German"
       }
     },
+    "resetScores": {
+      "label": "Reset Scores"
+    },
     "done": "Done"
   },
   "introPage": {
