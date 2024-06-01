@@ -5,28 +5,56 @@ import MinimaxComputerPlayerService from "./MinimaxComputerPlayerService";
 import { rowIndexes, columnIndexes, diagnalIndexes } from "../const/gridData";
 import { Player } from "../types/player";
 
+// generic interface for any type of AI
+interface ComputerAI {
+  makeNextMove(gridData: GridData): GridData;
+  getWinner(): Winner | null;
+}
+
+/**
+ * Service class managing the game logic and interactions between a human player and a computer AI.
+ */
 export default class GameService {
-  private computerAI: MinimaxComputerPlayerService;
+  private computerAI: ComputerAI;
   private humanPlayer: Player;
   private computerPlayer: Player;
   private thinkDelay: number;
 
+  /**
+   * Constructs a new GameService instance.
+   *
+   * @param difficulty - The difficulty level for the computer AI.
+   * @param humanPlayer - The human player.
+   * @param computerPlayer - The computer player.
+   * @param options - Optional parameters including a custom computer AI and a think delay.
+   */
   constructor(
     difficulty: Difficulty,
     humanPlayer: Player,
     computerPlayer: Player,
-    thinkDelay: number = 300,
+    options: {
+      computerAI?: ComputerAI;
+      thinkDelay?: number;
+    } = {},
   ) {
-    this.computerAI = new MinimaxComputerPlayerService(
-      difficulty,
-      humanPlayer.mark,
-      computerPlayer.mark,
-    );
+    this.computerAI =
+      options?.computerAI ||
+      new MinimaxComputerPlayerService(
+        difficulty,
+        humanPlayer.mark,
+        computerPlayer.mark,
+      );
     this.humanPlayer = humanPlayer;
     this.computerPlayer = computerPlayer;
-    this.thinkDelay = thinkDelay;
+    this.thinkDelay = options?.thinkDelay || 300;
   }
 
+  /**
+   * Executes the computer's move with an optional delay to simulate thinking time.
+   *
+   * @param gridData - The current state of the game grid.
+   * @returns A promise that resolves to the updated game grid after the computer's move.
+   */
   async doComputerMove(gridData: GridData): Promise<GridData> {
     // simulate computer thinking
     await sleep(this.thinkDelay);
@@ -34,49 +62,50 @@ export default class GameService {
     return this.computerAI.makeNextMove([...gridData]);
   }
 
+  /**
+   * Retrieves the winner of the game.
+   *
+   * @returns The winner of the game, or null if there is no winner yet.
+   */
   getWinner(): Winner | null {
     return this.computerAI.getWinner();
   }
 
+  /**
+   * Determines the player who has won the game.
+   *
+   * @returns The winning player, or null if there is no winner or if the game is a draw.
+   */
   getWinningPlayer(): Player | null {
     const winner = this.getWinner();
-    if (winner !== Winner.draw) {
-      return winner === Winner.huPlayer
-        ? this.humanPlayer
-        : this.computerPlayer;
+    if (winner === Winner.huPlayer) {
+      return this.humanPlayer;
+    } else if (winner === Winner.aiPlayer) {
+      return this.computerPlayer;
     } else {
-      // return null for a draw
       return null;
     }
   }
 
   /**
-   * Iterates through all predefined lines (rows, columns, diagonals)
-   * and checks if any of these lines are fully occupied by the winning player's mark.
-   * If a winning line is found, it is returned immediately to avoid unnecessary checks.
+   * Identifies the winning line in the current game grid.
    *
    * @param markedGrid - The current state of the game grid, with each cell marked by a player's mark.
-   * @returns GridIndex[] - An array of grid indices representing the winning line. Returns an empty array if no winning line is found.
+   * @returns An array of grid indices representing the winning line, or an empty array if no winning line is found.
    */
   getWinningLine(markedGrid: GridData): GridIndex[] {
     const allIndexes = [rowIndexes, columnIndexes, diagnalIndexes].flat();
 
-    let winningLine: GridIndex[] = [];
-
-    for (let lineIndexes of allIndexes) {
+    for (const lineIndexes of allIndexes) {
       if (
         lineIndexes.every(
-          (index: GridIndex) =>
-            markedGrid[index] === this.getWinningPlayer()?.mark,
+          (index) => markedGrid[index] === this.getWinningPlayer()?.mark,
         )
       ) {
-        winningLine = lineIndexes;
-
-        // avoid extra looping when wining line found
-        break;
+        return lineIndexes;
       }
     }
 
-    return winningLine;
+    return [];
   }
 }
