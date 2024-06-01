@@ -38,7 +38,7 @@ export default class GameService {
     } = {},
   ) {
     this.computerAI =
-      options?.computerAI ||
+      options.computerAI ||
       new MinimaxComputerPlayerService(
         difficulty,
         humanPlayer.mark,
@@ -46,7 +46,7 @@ export default class GameService {
       );
     this.humanPlayer = humanPlayer;
     this.computerPlayer = computerPlayer;
-    this.thinkDelay = options?.thinkDelay || 300;
+    this.thinkDelay = options.thinkDelay || 300;
   }
 
   /**
