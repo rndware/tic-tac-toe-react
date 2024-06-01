@@ -18,7 +18,9 @@ describe("GameService", () => {
     mark: Mark.o,
   };
 
-  const service = new GameService(Difficulty.Easy, huPlayer, aiPlayer, 0);
+  const service = new GameService(Difficulty.Easy, huPlayer, aiPlayer, {
+    thinkDelay: 0,
+  });
 
   describe("AI player makes a move", () => {
     it("should call MinimaxComputerPlayerService to get the result", async () => {

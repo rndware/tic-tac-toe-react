@@ -20,7 +20,7 @@ type Options = { [key: string]: string };
 
 interface SettingsFormProps {
   copy: I18nCopy;
-  formControls: FormControlData[];
+  selectFormControls: SelectFormControlData[];
 }
 
 const renderSelectOptions = (
@@ -34,7 +34,7 @@ const renderSelectOptions = (
     </MenuItem>
   ));
 
-export interface FormControlData {
+export interface SelectFormControlData {
   key: string;
   copy: I18nCopy;
   value: string;
@@ -43,31 +43,32 @@ export interface FormControlData {
   options: Options;
 }
 
-const renderFormControls = (formControls: FormControlData[]) =>
-  formControls.map((item: FormControlData) => (
-    <div
-      key={`form-control-item-${item.key}`}
-      className={styles.SettingsForm__formControl}
-    >
-      <FormControl>
-        <InputLabel id={`${item.key}-label`}>{item.copy.label}</InputLabel>
-        <Select
-          className={styles.Select}
-          labelId={`${item.key}-label`}
-          id={`${item.key}-select`}
-          value={item.value}
-          label={item.copy.label}
-          onChange={item.onChange}
-        >
-          {renderSelectOptions(item.key, item.enum, item.options)}
-        </Select>
-      </FormControl>
-    </div>
-  ));
+const SelectFormControl = (item: SelectFormControlData) => (
+  <div
+    key={`form-control-item-${item.key}`}
+    className={styles.SettingsForm__formControl}
+  >
+    <FormControl>
+      <InputLabel id={`${item.key}-label`}>{item.copy.label}</InputLabel>
+      <Select
+        className={styles.Select}
+        labelId={`${item.key}-label`}
+        id={`${item.key}-select`}
+        value={item.value}
+        label={item.copy.label}
+        onChange={item.onChange}
+      >
+        {renderSelectOptions(item.key, item.enum, item.options)}
+      </Select>
+    </FormControl>
+  </div>
+);
 
 const SettingsForm = (props: SettingsFormProps) => (
   <form className={styles.SettingsForm} noValidate autoComplete="off">
-    {renderFormControls(props.formControls)}
+    {props.selectFormControls.map((control) => (
+      <SelectFormControl {...control} />
+    ))}
     <div className={styles.SettingsForm__controls}>
       <Button
         type="submit"

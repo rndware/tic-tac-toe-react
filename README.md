@@ -18,6 +18,7 @@ Note: audit issues are not due to create-react-app: https://overreacted.io/npm-a
 - Used Material UI for icons, inputs and buttons
 - Storybook component explorer integration
 - Decoupled board from game logic
+- Decoupled AI logic from game (SOLID)
 - Use of services to decouple AI logic from slices
 - Keeping reducers 'flat' to avoid heavily nested data
 - Keeping reducers small for readability 
