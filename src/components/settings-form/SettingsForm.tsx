@@ -43,31 +43,32 @@ export interface SelectFormControlData {
   options: Options;
 }
 
-const renderSelectFormControls = (formControls: SelectFormControlData[]) =>
-  formControls.map((item: SelectFormControlData) => (
-    <div
-      key={`form-control-item-${item.key}`}
-      className={styles.SettingsForm__formControl}
-    >
-      <FormControl>
-        <InputLabel id={`${item.key}-label`}>{item.copy.label}</InputLabel>
-        <Select
-          className={styles.Select}
-          labelId={`${item.key}-label`}
-          id={`${item.key}-select`}
-          value={item.value}
-          label={item.copy.label}
-          onChange={item.onChange}
-        >
-          {renderSelectOptions(item.key, item.enum, item.options)}
-        </Select>
-      </FormControl>
-    </div>
-  ));
+const SelectFormControl = (item: SelectFormControlData) => (
+  <div
+    key={`form-control-item-${item.key}`}
+    className={styles.SettingsForm__formControl}
+  >
+    <FormControl>
+      <InputLabel id={`${item.key}-label`}>{item.copy.label}</InputLabel>
+      <Select
+        className={styles.Select}
+        labelId={`${item.key}-label`}
+        id={`${item.key}-select`}
+        value={item.value}
+        label={item.copy.label}
+        onChange={item.onChange}
+      >
+        {renderSelectOptions(item.key, item.enum, item.options)}
+      </Select>
+    </FormControl>
+  </div>
+);
 
 const SettingsForm = (props: SettingsFormProps) => (
   <form className={styles.SettingsForm} noValidate autoComplete="off">
-    {renderSelectFormControls(props.selectFormControls)}
+    {props.selectFormControls.map((control) => (
+      <SelectFormControl {...control} />
+    ))}
     <div className={styles.SettingsForm__controls}>
       <Button
         type="submit"
