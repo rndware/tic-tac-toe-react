@@ -1,4 +1,4 @@
-import React, { MouseEvent } from "react";
+import React, { MouseEvent, useMemo } from "react";
 import classNames from "classnames";
 import { createSlot } from "react-slotify";
 
@@ -28,7 +28,11 @@ export const BoardCellSlot = createSlot<{
 const Board = (props: React.PropsWithChildren<BoardProps>) => {
   const size = props.gridSize || gridSize;
 
-  const chunckedArray: GridData[] = chunkArray(props.gridData, size);
+  const chunkedArray = useMemo(
+    () => chunkArray(props.gridData, size),
+    [props.gridData, size],
+  );
+
   return (
     <div className="Board">
       <table
@@ -41,7 +45,7 @@ const Board = (props: React.PropsWithChildren<BoardProps>) => {
         })}
       >
         <tbody>
-          {chunckedArray.map((gridItems: GridItem[], indexRow: GridIndex) => (
+          {chunkedArray.map((gridItems: GridItem[], indexRow: GridIndex) => (
             <BoardRow
               key={`row-item-${indexRow}`}
               gridSize={size}
@@ -49,7 +53,7 @@ const Board = (props: React.PropsWithChildren<BoardProps>) => {
               indexRow={indexRow}
               highlighted={props.highlighted}
               highlightColor={props.highlightColor}
-              onClick={(e: any, index: GridIndex) =>
+              onClick={(e: MouseEvent, index: GridIndex) =>
                 !props.disabled && props.onClick(e, index)
               }
             >

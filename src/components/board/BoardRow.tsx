@@ -1,3 +1,4 @@
+import { MouseEvent } from "react";
 import { createSlot } from "react-slotify";
 
 import { GridIndex, GridData, GridItem } from "../../types/grid";
@@ -29,7 +30,7 @@ export const BoardRow = (props: React.PropsWithChildren<BoardRowProps>) => (
             value={gridItem}
             isHighlighted={props.highlighted?.includes(flatIndex)}
             highlightColor={props.highlightColor}
-            onClick={(e: any) => props.onClick(e, flatIndex)}
+            onClick={(e: MouseEvent) => props.onClick(e, flatIndex)}
           >
             {props.children && (
               <CellSlot>
