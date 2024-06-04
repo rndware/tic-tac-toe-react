@@ -20,7 +20,7 @@ interface ScoreboardSectionProps {
 }
 
 const ScoreboardSection = (props: ScoreboardSectionProps) => (
-  <div className={styles["Scoreboard__section"]}>
+  <section className={styles["Scoreboard__section"]}>
     <Typography className={styles["Section_title"]} variant="h4" component="h2">
       {props.title}
     </Typography>
@@ -29,7 +29,7 @@ const ScoreboardSection = (props: ScoreboardSectionProps) => (
         {props.copy[key]}: {value}
       </div>
     ))}
-  </div>
+  </section>
 );
 
 const Scoreboard = (props: ScoreboardProps) => (

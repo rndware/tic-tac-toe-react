@@ -47,7 +47,7 @@ export interface SelectFormControlData {
 export interface ActionButtonData {
   key: string;
   copy: I18nCopy;
-  onClick: (e: any) => void;
+  onClick: (e: MouseEvent) => void;
 }
 
 const SelectFormControl = (item: SelectFormControlData) => (

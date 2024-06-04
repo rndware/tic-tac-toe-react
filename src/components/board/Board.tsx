@@ -10,8 +10,13 @@ import { BoardRow, BoardRowCellSlot } from "./BoardRow";
 
 import styles from "./Board.module.scss";
 
+export enum GridLayout {
+  Grid = "grid",
+  Lined = "lined",
+}
+
 interface BoardProps {
-  layout?: "grid" | "lined";
+  layout?: GridLayout;
   gridSize?: number;
   disabled?: boolean;
   gridData: GridData;
@@ -40,8 +45,8 @@ const Board = (props: React.PropsWithChildren<BoardProps>) => {
         className={classNames({
           [styles.Board__table]: true,
           [styles["Board__table--disabled"]]: props.disabled,
-          [styles["Board__table--grid"]]: props.layout === "grid",
-          [styles["Board__table--lined"]]: !(props.layout === "grid"),
+          [styles["Board__table--grid"]]: props.layout === GridLayout.Grid,
+          [styles["Board__table--lined"]]: !(props.layout === GridLayout.Grid),
         })}
       >
         <tbody>
