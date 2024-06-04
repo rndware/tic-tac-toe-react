@@ -38,10 +38,13 @@ export const scoreHistorySlice = createSlice({
     revertToPreviousScore(state) {
       state.scoreRecord.splice(-2);
     },
+    resetScores(state) {
+      state.scoreRecord = initialState.scoreRecord;
+    },
   },
 });
 
-export const { revertToPreviousScore, recordScoreHistory } =
+export const { revertToPreviousScore, recordScoreHistory, resetScores } =
   scoreHistorySlice.actions;
 
 export const getPlayerScores = (state: RootState): GameScores => {

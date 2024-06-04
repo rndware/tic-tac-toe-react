@@ -6,6 +6,7 @@ import { Difficulty, Lang, isDifficultyEnum } from "../types/game";
 import { I18nCopy } from "../types/app";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
 import { setDifficulty, getDifficulty } from "../reducers/SettingsSlice";
+import { resetScores } from "../reducers/ScoreHistorySlice";
 import { useLanguageSettings } from "../hooks/useLanguageSettings";
 import SettingsForm from "../components/settings-form";
 
@@ -42,8 +43,25 @@ const SettingsContainer = () => {
     [difficulty, language, handleLangChange, settingsCopy, dispatch],
   );
 
+  const actionButtons = useMemo(
+    () => [
+      {
+        key: "resetScores",
+        copy: settingsCopy.resetScores,
+        onClick: (e: any) => {
+          dispatch(resetScores());
+        },
+      },
+    ],
+    [settingsCopy.resetScores, dispatch],
+  );
+
   return (
-    <SettingsForm selectFormControls={selectFormControls} copy={settingsCopy} />
+    <SettingsForm
+      selectFormControls={selectFormControls}
+      actionButtons={actionButtons}
+      copy={settingsCopy}
+    />
   );
 };
 
