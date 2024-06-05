@@ -7,6 +7,7 @@ export interface ActionButtonData {
   key: string;
   copy: I18nCopy;
   onClick: (e: MouseEvent) => Promise<void>;
+  loadingText?: string;
 }
 
 export const ButtonFormControl = (item: ActionButtonData) => {
@@ -23,9 +24,11 @@ export const ButtonFormControl = (item: ActionButtonData) => {
     }
   };
 
+  const loadingText = item.loadingText || "⏳";
+
   return (
     <Button onClick={onClick} type="submit" color="primary" variant="contained">
-      {item.copy.label} {loading ? "⏳" : ""}
+      {item.copy.label} {loading ? loadingText : ""}
     </Button>
   );
 };
