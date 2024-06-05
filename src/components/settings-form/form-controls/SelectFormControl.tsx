@@ -4,15 +4,9 @@ import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import { SelectChangeEvent } from "@mui/material/Select";
 
-import { I18nCopy } from "../../../types/app";
+import { I18nCopy, EnumMap, Options } from "../../../types/app";
 
 import styles from "../SettingsForm.module.scss";
-
-interface EnumMap {
-  [key: string]: string;
-}
-
-type Options = { [key: string]: string };
 
 export interface SelectFormControlData {
   key: string;
