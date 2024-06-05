@@ -3,6 +3,7 @@ import { GridData, GridIndex } from "../types/grid";
 import { sleep } from "../utils";
 import MinimaxComputerPlayerService from "./MinimaxComputerPlayerService";
 import { rowIndexes, columnIndexes, diagnalIndexes } from "../const/gridData";
+import { interactionDelay } from "../const/config";
 import { Player } from "../types/player";
 
 // generic interface for any type of AI
@@ -46,7 +47,7 @@ export default class GameService {
       );
     this.humanPlayer = humanPlayer;
     this.computerPlayer = computerPlayer;
-    this.thinkDelay = options.thinkDelay || 300;
+    this.thinkDelay = options.thinkDelay || interactionDelay;
   }
 
   /**
