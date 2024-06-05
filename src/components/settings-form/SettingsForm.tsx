@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Button from "@mui/material/Button";
 import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
+import LoadingButton from "@mui/lab/LoadingButton";
 import { SelectChangeEvent } from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
@@ -72,9 +73,9 @@ const SelectFormControl = (item: SelectFormControlData) => (
 );
 
 const ActionButton = (item: ActionButtonData) => (
-  <Button type="submit" color="primary" variant="contained">
+  <LoadingButton type="submit" color="primary" variant="contained">
     {item.copy.label}
-  </Button>
+  </LoadingButton>
 );
 
 const SettingsForm = (props: SettingsFormProps) => (

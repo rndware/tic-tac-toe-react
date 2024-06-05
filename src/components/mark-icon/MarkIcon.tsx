@@ -10,32 +10,33 @@ interface MarkProps {
   value: GridItem;
 }
 
-const getMaterialIcon = (props: MarkProps) => {
-  if (props.value === Mark.o) {
-    return (
-      <CircleOutlinedIcon
-        aria-label="Nought symbol"
-        aria-hidden={false}
-        data-testid="mark-icon-nought"
-        className="MarkIcon__nought"
-      />
-    );
-  } else if (props.value === Mark.x) {
-    return (
-      <CloseIcon
-        aria-label="Cross symbol"
-        aria-hidden={false}
-        data-testid="mark-icon-cross"
-        className="MarkIcon__cross"
-      />
-    );
-  } else {
-    return <div data-testid="mark-icon-empty" className="MarkIcon__empty" />;
+const renderMaterialIcon = (props: MarkProps) => {
+  switch (props.value) {
+    case Mark.o:
+      return (
+        <CircleOutlinedIcon
+          aria-label="Nought symbol"
+          data-testid="mark-icon-nought"
+          className={styles.MarkIcon__nought}
+        />
+      );
+    case Mark.x:
+      return (
+        <CloseIcon
+          aria-label="Cross symbol"
+          data-testid="mark-icon-cross"
+          className={styles.MarkIcon__cross}
+        />
+      );
+    default:
+      return (
+        <div data-testid="mark-icon-empty" className={styles.MarkIcon__empty} />
+      );
   }
 };
 
 const MarkIcon = (props: MarkProps) => (
-  <div className={styles.MarkIcon}>{getMaterialIcon(props)}</div>
+  <div className={styles.MarkIcon}>{renderMaterialIcon(props)}</div>
 );
 
 export default MarkIcon;

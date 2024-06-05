@@ -16,21 +16,21 @@ const GameOverContainer = () => {
   const gameMode = useAppSelector(getGameMode);
   const gameOver = gameMode === Mode.Ended;
 
+  const copy = t("gamePage", {
+    name: winningPlayer?.name,
+    returnObjects: true,
+  });
+
+  if (!gameOver) return null;
+
   return (
-    <>
-      {gameOver && (
-        <GameOverBanner
-          copy={t("gamePage", {
-            name: winningPlayer?.name,
-            returnObjects: true,
-          })}
-          gameMode={gameMode}
-          winningPlayer={winningPlayer}
-          onRestart={() => dispatch(startGame())}
-          onQuit={() => navigate("/")}
-        />
-      )}
-    </>
+    <GameOverBanner
+      copy={copy}
+      gameMode={gameMode}
+      winningPlayer={winningPlayer}
+      onRestart={() => dispatch(startGame())}
+      onQuit={() => navigate("/")}
+    />
   );
 };
 
