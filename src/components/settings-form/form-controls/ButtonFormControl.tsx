@@ -2,6 +2,7 @@ import React, { useState, MouseEvent } from "react";
 import Button from "@mui/material/Button";
 
 import { I18nCopy } from "../../../types/app";
+
 export interface ActionButtonData {
   key: string;
   copy: I18nCopy;

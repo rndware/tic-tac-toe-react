@@ -1,17 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
 import Button from "@mui/material/Button";
 
 import {
   ButtonFormControl,
   ActionButtonData,
-} from "./form-controls/ButtonFormControl";
-import {
   SelectFormControl,
   SelectFormControlData,
-} from "./form-controls/SelectFormControl";
-
+} from "./form-controls";
 import { I18nCopy } from "../../types/app";
 
 import styles from "./SettingsForm.module.scss";
