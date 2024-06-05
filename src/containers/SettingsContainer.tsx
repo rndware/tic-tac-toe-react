@@ -50,7 +50,7 @@ const SettingsContainer = () => {
       {
         key: "resetScores",
         copy: settingsCopy.resetScores,
-        onClick: async (e: MouseEvent) => {
+        onClick: async (_: MouseEvent) => {
           dispatch(resetScores());
           return sleep(interactionDelay);
         },

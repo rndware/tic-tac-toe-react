@@ -14,19 +14,19 @@ import styles from "./SettingsForm.module.scss";
 
 export interface SettingsFormProps {
   copy: I18nCopy;
-  selectFormControls: SelectFormControlData[];
-  actionButtons: ActionButtonData[];
+  selectFormControls?: SelectFormControlData[];
+  actionButtons?: ActionButtonData[];
 }
 
 const SettingsForm = (props: SettingsFormProps) => (
   <form className={styles["SettingsForm"]} noValidate autoComplete="off">
     <div className={styles["SettingsForm__selects"]}>
-      {props.selectFormControls.map((control) => (
+      {props.selectFormControls?.map((control) => (
         <SelectFormControl {...control} />
       ))}
     </div>
     <div className={styles["SettingsForm__actions"]}>
-      {props.actionButtons.map((actionButton) => (
+      {props.actionButtons?.map((actionButton) => (
         <ButtonFormControl {...actionButton} />
       ))}
     </div>
