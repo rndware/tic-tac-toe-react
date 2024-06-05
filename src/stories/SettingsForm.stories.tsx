@@ -38,13 +38,23 @@ const copy = {
       de: "German",
     },
   },
+  resetScores: {
+    label: "Reset Scores",
+  },
   done: "Done",
 };
 
 export const Default = {
   args: {
     copy,
-    formControls: [
+    actionButtons: [
+      {
+        key: "resetScores",
+        copy: copy.resetScores,
+        onClick: async (_: MouseEvent) => {},
+      },
+    ],
+    selectFormControls: [
       {
         key: "difficulty",
         copy: copy.difficulty,
