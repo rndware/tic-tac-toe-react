@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, MouseEvent } from "react";
 import { Link } from "react-router-dom";
 
 import Button from "@mui/material/Button";
@@ -47,7 +47,7 @@ export interface SelectFormControlData {
 export interface ActionButtonData {
   key: string;
   copy: I18nCopy;
-  onClick: (e: MouseEvent) => void;
+  onClick: (e: MouseEvent) => Promise<void>;
 }
 
 const SelectFormControl = (item: SelectFormControlData) => (
@@ -71,11 +71,26 @@ const SelectFormControl = (item: SelectFormControlData) => (
   </div>
 );
 
-const ActionButton = (item: ActionButtonData) => (
-  <Button type="submit" color="primary" variant="contained">
-    {item.copy.label}
-  </Button>
-);
+const ActionButton = (item: ActionButtonData) => {
+  const [loading, setLoading] = useState(false);
+
+  const onClick = async (e: MouseEvent) => {
+    e.preventDefault();
+    setLoading(true);
+
+    try {
+      await item.onClick(e);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <Button onClick={onClick} type="submit" color="primary" variant="contained">
+      {item.copy.label} {loading ? "⏳" : ""}
+    </Button>
+  );
+};
 
 const SettingsForm = (props: SettingsFormProps) => (
   <form className={styles["SettingsForm"]} noValidate autoComplete="off">
