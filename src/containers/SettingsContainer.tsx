@@ -1,68 +1,26 @@
-import React, { useMemo, MouseEvent } from "react";
-import { SelectChangeEvent } from "@mui/material/Select";
-import { useTranslation } from "react-i18next";
-
-import { sleep } from "../utils";
-import { Difficulty, Lang, isDifficultyEnum } from "../types/game";
-import { I18nCopy } from "../types/app";
-import { useAppDispatch, useAppSelector } from "../app/hooks";
-import { setDifficulty, getDifficulty } from "../reducers/SettingsSlice";
-import { resetScores } from "../reducers/ScoreHistorySlice";
-import { useLanguageSettings } from "../hooks/useLanguageSettings";
+import React, { useMemo } from "react";
 import SettingsForm from "../components/settings-form";
-import { interactionDelay } from "../const/config";
+import { useFormControls } from "../hooks/useFormControls";
+import { enabledSettings } from "../const/config";
 
 const SettingsContainer = () => {
-  const { language, handleLangChange } = useLanguageSettings();
-  const dispatch = useAppDispatch();
-  const { t } = useTranslation();
-  const difficulty = useAppSelector(getDifficulty);
+  const { selectFormControls, actionButtons, settingsCopy } = useFormControls();
 
-  const settingsCopy: I18nCopy = t("settingsPage", { returnObjects: true });
-
-  const selectFormControls = useMemo(
-    () => [
-      {
-        key: "difficulty",
-        copy: settingsCopy.difficulty,
-        value: difficulty,
-        enum: Difficulty,
-        onChange: (e: SelectChangeEvent<string>) => {
-          const difficulty = e.target.value;
-          isDifficultyEnum(difficulty) && dispatch(setDifficulty(difficulty));
-        },
-        options: settingsCopy.difficulty.options,
-      },
-      {
-        key: "lang",
-        copy: settingsCopy.lang,
-        value: language,
-        enum: Lang,
-        onChange: handleLangChange,
-        options: settingsCopy.lang.options,
-      },
-    ],
-    [difficulty, language, handleLangChange, settingsCopy, dispatch],
+  const enabledSelects = useMemo(
+    () =>
+      selectFormControls.filter((item) => enabledSettings.includes(item.key)),
+    [selectFormControls],
   );
 
-  const actionButtons = useMemo(
-    () => [
-      {
-        key: "resetScores",
-        copy: settingsCopy.resetScores,
-        onClick: async (_: MouseEvent) => {
-          dispatch(resetScores());
-          return sleep(interactionDelay);
-        },
-      },
-    ],
-    [settingsCopy.resetScores, dispatch],
+  const enabledActions = useMemo(
+    () => actionButtons.filter((item) => enabledSettings.includes(item.key)),
+    [actionButtons],
   );
 
   return (
     <SettingsForm
-      selectFormControls={selectFormControls}
-      actionButtons={actionButtons}
+      selectFormControls={enabledSelects}
+      actionButtons={enabledActions}
       copy={settingsCopy}
     />
   );
