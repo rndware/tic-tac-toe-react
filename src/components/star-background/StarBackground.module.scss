@@ -9,6 +9,10 @@ $time-2: 120s;
 $time-3: 180s;
 $time-4: 200s;
 
+$particle-sm: 1px;
+$particle-md: 2px;
+$particle-lg: 3px;
+
 /* mixins */
 @function particles($max) {
   $val: 0px 0px $color-particle;
@@ -56,47 +60,47 @@ $time-4: 200s;
 .particle-1 {
   animation: animParticle $time-1 linear infinite;
   @include particles(1000);
-  height: 2px;
-  width: 2px;
+  height: $particle-md;
+  width: $particle-md;
 }
 
 .particle-1:after {
   @include particles(900);
-  height: 2px;
-  width: 2px;
+  height: $particle-md;
+  width: $particle-md;
 }
 
 .particle-2 {
   animation: animParticle $time-2 linear infinite;
   @include particles(800);
-  height: 2px;
-  width: 2px;
+  height: $particle-md;
+  width: $particle-md;
 }
 
 .particle-2:after {
   @include particles(500);
-  height: 3px;
-  width: 3px;
+  height: $particle-lg;
+  width: $particle-lg;
 }
 
 .particle-3:after {
   @include particles(1100);
-  height: 3px;
-  width: 3px;
+  height: $particle-lg;
+  width: $particle-lg;
   border-radius: 50%;
 }
 
 .particle-4 {
   animation: animParticle $time-4 linear infinite;
   @include particles(1200);
-  height: 1px;
-  width: 1px;
+  height: $particle-sm;
+  width: $particle-sm;
 }
 
 .particle-4:after {
   @include particles(700);
-  height: 1px;
-  width: 1px;
+  height: $particle-sm;
+  width: $particle-sm;
 }
 
 @keyframes animParticle {
@@ -110,6 +114,6 @@ $time-4: 200s;
 
 .page-wrapper {
   text-align: center;
-  color: #fff;
+  color: $color-particle;
   z-index: 2;
 }

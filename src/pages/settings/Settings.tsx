@@ -13,7 +13,7 @@ const Settings = () => {
       <Typography
         className={styles.SettingsPage__title}
         variant="h3"
-        component="h3"
+        component="h1"
       >
         {t("settingsPage.title")}
       </Typography>
