@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { useTranslation } from "react-i18next";
-import StarBackground from "../../components/star-background";
 import styles from "./Intro.module.scss";
 
 const Intro = () => {
@@ -11,7 +10,6 @@ const Intro = () => {
 
   return (
     <div className={styles.IntroPage}>
-      <StarBackground />
       <Typography
         className={styles.IntroPage__title}
         variant="h1"

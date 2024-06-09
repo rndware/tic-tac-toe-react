@@ -12,12 +12,14 @@ import NotFound from "./pages/not-found";
 
 import { appTheme } from "./themes/theme";
 import { useStoredLanguage } from "./app/hooks";
+import StarBackground from "./components/star-background";
 
 const App = () => {
   useStoredLanguage();
 
   return (
     <div className="App">
+      <StarBackground />
       <ThemeProvider theme={appTheme}>
         <main className="App__main">
           <Container fixed>
