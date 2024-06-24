@@ -24,7 +24,7 @@ export const ButtonFormControl = (item: ActionButtonData) => {
     }
   };
 
-  const loadingText = item.loadingText || "⏳";
+  const loadingText = item.loadingText ?? "⏳";
 
   return (
     <Button onClick={onClick} type="submit" color="primary" variant="contained">

@@ -39,7 +39,7 @@ const BoardCell = (props: React.PropsWithChildren<BoardCellProps>) => {
           value={props.value}
           id={props.id}
         />
-      )) || <MarkIcon value={props.value} />}
+      )) ?? <MarkIcon value={props.value} />}
     </div>
   );
 };

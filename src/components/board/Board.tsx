@@ -31,7 +31,7 @@ export const BoardCellSlot = createSlot<{
 }>();
 
 const Board = (props: React.PropsWithChildren<BoardProps>) => {
-  const size = props.gridSize || gridSize;
+  const size = props.gridSize ?? gridSize;
 
   const chunkedArray = useMemo(
     () => chunkArray(props.gridData, size),

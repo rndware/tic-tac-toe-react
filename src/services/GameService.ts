@@ -47,7 +47,7 @@ export default class GameService {
       );
     this.humanPlayer = humanPlayer;
     this.computerPlayer = computerPlayer;
-    this.thinkDelay = options.thinkDelay || interactionDelay;
+    this.thinkDelay = options.thinkDelay ?? interactionDelay;
   }
 
   /**
@@ -79,6 +79,7 @@ export default class GameService {
    */
   getWinningPlayer(): Player | null {
     const winner = this.getWinner();
+
     if (winner === Winner.huPlayer) {
       return this.humanPlayer;
     } else if (winner === Winner.aiPlayer) {
