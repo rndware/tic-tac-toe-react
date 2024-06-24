@@ -39,7 +39,7 @@ export const markHistorySlice = createSlice({
       state.marksRecord.push(record);
     },
     revertToPreviousInteraction(state) {
-      state.marksRecord.splice(-2);
+      state.marksRecord.splice(-2); // remove player and human move
     },
   },
 });

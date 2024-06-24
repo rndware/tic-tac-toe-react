@@ -36,7 +36,7 @@ export const scoreHistorySlice = createSlice({
       state.scoreRecord.push(record);
     },
     revertToPreviousScore(state) {
-      state.scoreRecord.splice(-2);
+      state.scoreRecord.splice(-1);
     },
     resetScores(state) {
       state.scoreRecord = initialState.scoreRecord;
