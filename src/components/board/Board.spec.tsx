@@ -21,7 +21,7 @@ describe("Board", () => {
       );
     });
 
-    it("should not supppress click events made by the player", () => {
+    it("should not suppress click events made by the player", () => {
       const handleClick = jest.fn();
       render(<Board gridData={gridData} onClick={handleClick} />);
 
@@ -40,7 +40,7 @@ describe("Board", () => {
       );
     });
 
-    it("should supppress click events made by the player", () => {
+    it("should suppress click events made by the player", () => {
       const handleClick = jest.fn();
       render(
         <Board disabled={true} gridData={gridData} onClick={handleClick} />,

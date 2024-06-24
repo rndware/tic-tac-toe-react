@@ -13,7 +13,6 @@ Note: audit issues are not due to create-react-app: https://overreacted.io/npm-a
 - Written in React/Redux/Typescript
 - Use of functional and 'dumb' components where possible
 - Used compound components / slots to specify custom grid cells
-- Unit tested with BDD where possible
 - Styled using Sass modules with BEM syntax
 - Used Material UI for icons, inputs and buttons
 - Storybook component explorer integration
