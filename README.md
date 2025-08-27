@@ -10,21 +10,21 @@ Note: audit issues are not due to create-react-app: https://overreacted.io/npm-a
 
 ## Highlights
 
-- Written in React/Redux/Typescript
-- Use of functional and 'dumb' components where possible
-- Used compound components / slots to specify custom grid cells
-- Styled using Sass modules with BEM syntax
-- Used Material UI for icons, inputs and buttons
-- Storybook component explorer integration
-- Decoupled board from game logic
-- Decoupled AI logic from game (SOLID)
-- Use of services to decouple AI logic from slices
-- Keeping reducers 'flat' to avoid heavily nested data
-- Keeping reducers small for readability 
-- I18n in English and German
-- Use of local storage for saving settings data
-- Undo button to replay interactions using board history
-- Partially responsive
+- Built with **React, Redux, and TypeScript**
+- Emphasized **functional and presentational components**
+- Implemented **compound components / slots** for custom grid cells
+- Styled with **Sass modules** following **BEM syntax**
+- Leveraged **Material UI** for icons, inputs, and buttons
+- Integrated with **Storybook** for component exploration
+- Decoupled board and game logic for maintainability
+- Separated AI logic from game (**SOLID principles**)
+- Used services to isolate AI logic from Redux slices
+- Maintained flat, readable reducers (avoiding deep nesting)
+- Kept reducers small and easy to follow
+- Added internationalization (English & German)
+- Used local storage for persisting settings
+- Implemented undo functionality with board history
+- Designed to be partially responsive
 
 ## TO-DO
 
@@ -33,7 +33,6 @@ Note: audit issues are not due to create-react-app: https://overreacted.io/npm-a
 - ~~Add in `classnames` for class toggling~~
 - Reduce number of dispatch calls in `"game/playMove"` Thunk
 - ~~Create a per region config file to replace static const data~~
-- Make game service no longer global in module
 - Create util for toggling element modifier e.g. `--highlight`
 - ~~Add storybook with full component coverage~~
 - ~~Create settings page to change player difficulty~~
